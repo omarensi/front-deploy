@@ -1,0 +1,10 @@
+language: generic 
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t b2tes/front-deploy -f Dockerfile.dev .
+
+  script:
+    - docker run -e CI=true b2tes/front-deploy npm run test
