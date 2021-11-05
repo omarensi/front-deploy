@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t b2tes/front-deploy -f Dockerfile.dev .
+  - docker build -t b2tes/front-deploy -f Dockerfile .
 
 script:
   - docker run -e CI=true b2tes/front-deploy npm run test
