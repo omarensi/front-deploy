@@ -7,3 +7,16 @@ before_install:
 
 script:
   - docker run -e CI=true b2tes/front-deploy npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "front-deploy"
+  env: "Frontdeploy-env"
+  bucket_name: "elasticbeanstalk-us-east-2-389230495838"
+  bucket_path: "front-deploy"
+  on:
+    branch: master
+  acess_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "AWS_SECRET_KEY" 
